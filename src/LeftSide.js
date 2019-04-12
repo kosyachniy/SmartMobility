@@ -1,15 +1,31 @@
 import React from "react";
 import { Col, Button, Icon } from "antd";
 import "antd/dist/antd.css";
+import RightSide from "./RightSide";
 
 export default class LeftSide extends React.Component {
-  onClick = () => {
-    console.log(this.props.properties.minus);
-    this.props.properties.minus = !this.props.properties.minus;
-    console.log(this.props.properties.minus);
+  state = {
+    showingWindow: 0
+  };
+
+  onClick = num => {
+    let newWindow;
+    if (this.state.showingWindow == num) {
+      newWindow = 0;
+    } else {
+      newWindow = num;
+    }
+    this.setState({
+      showingWindow: newWindow
+    });
   };
 
   render() {
+    const window =
+      (this.state.showingWindow == 0 && "Nichego") ||
+      (this.state.showingWindow == 1 && "First window") ||
+      (this.state.showingWindow == 2 && "Second window") ||
+      (this.state.showingWindow == 3 && "Third window");
     return (
       <div>
         <Col span={6} style={{ backgroundColor: "white", height: "100%" }}>
@@ -37,7 +53,7 @@ export default class LeftSide extends React.Component {
               shape="circle"
               icon="minus"
               size={"large"}
-              onClick={this.onClick}
+              onClick={() => this.onClick(1)}
             />
             <h3>Share a car</h3>
           </div>
@@ -45,17 +61,28 @@ export default class LeftSide extends React.Component {
             className="takeButton"
             style={{ textAlign: "center", marginTop: "7%" }}
           >
-            <Button shape="circle" icon="plus" size={"large"} />
+            <Button
+              shape="circle"
+              icon="plus"
+              size={"large"}
+              onClick={() => this.onClick(2)}
+            />
             <h3>Rent a car</h3>
           </div>
           <div
             className="rideButton"
             style={{ textAlign: "center", marginTop: "7%" }}
           >
-            <Button shape="circle" icon="car" size={"large"} />
+            <Button
+              shape="circle"
+              icon="car"
+              size={"large"}
+              onClick={() => this.onClick(3)}
+            />
             <h3>Take a ride</h3>
           </div>
         </Col>
+        <RightSide show={window} />
       </div>
     );
   }

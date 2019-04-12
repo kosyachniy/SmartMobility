@@ -6,7 +6,9 @@ export default class RightSide extends React.Component {
     return (
       <div>
         <Col span={16} style={{ backgroundColor: "white", height: "100%" }}>
-          <div className="interactiveMap">Kek</div>
+          <div className="interactiveMap" style={{ textAlign: "center" }}>
+            {this.props.show}
+          </div>
         </Col>
       </div>
     );
