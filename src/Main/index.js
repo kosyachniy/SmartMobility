@@ -1,15 +1,19 @@
 import React from 'react'
 import 'bulma/css/bulma.css'
 
-import { appId, appCode, geoLat, geoLng } from '../keys'
+import { appId, appCode } from '../keys'
+import { geoLat, geoLng } from '../sets'
 import './style.css'
+import Header from '../Header'
 import Owner from '../Owner'
+// import MyLoc from '../MyLoc'
 import Map from '../Map'
 
 
 export default class Main extends React.Component {
 	state = {
-		owner: true
+		owner: true,
+		auth: false,
 	}
 
 	handlerType = () => {
@@ -25,26 +29,19 @@ export default class Main extends React.Component {
 	}
 
 	render() {
-		const body = (this.state.owner && <Owner />) || (<Map
+		const body = (this.state.owner && (!this.state.auth && <Owner />)) || (<Map
 			app_id={ appId }
 			app_code={ appCode }
 			lat={ geoLat }
 			lng={ geoLng }
 			zoom={ 13 }
 		/>)
+
+		// || (this.state.auth && <MyLoc />)
+
 		return (
 			<div className="main">
-				<div className="header">
-					<div className="trig">
-						Owner
-						<label className="switch">
-							<input type="checkbox" onChange={ this.handlerType } />
-							<span className="slider round"></span>
-						</label>
-						Driver
-					</div>
-				</div>
-	
+				<Header handlerType={ this.handlerType } />
 				{ body }
 			</div>
 		)

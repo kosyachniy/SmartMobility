@@ -1,10 +1,21 @@
 .field {
-	padding: 25px;
-	margin-top: 50px;
+	padding: 0 25px 0 25px;
+	margin: 0;
+}
+
+.main-form {
+	margin-top: 75px;
+	padding-top: 25px;
+	margin-bottom: 0;
+	padding-bottom: 0;
 }
 
 .control {
-	margin: 15px;
+	margin: 15px 0 15px 0;
+}
+
+.button {
+	margin-top: 25px;
 }
 
 @media (min-width: 500px) {
