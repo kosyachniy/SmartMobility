@@ -1,0 +1,21 @@
+.field {
+	padding: 25px;
+}
+
+.control {
+	margin: 15px;
+}
+
+@media (min-width: 500px) {
+	.field {
+		width: 80%;
+		margin-left: 10%;
+	}
+}
+
+@media (min-width: 1000px) {
+	.field {
+		width: 800px;
+		margin-left: calc(50% - 400px);
+	}
+}
