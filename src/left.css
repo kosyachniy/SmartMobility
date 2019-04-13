@@ -1,0 +1,37 @@
+.main_title {
+  z-index: 10;
+  margin: 0;
+  background-image: linear-gradient(30deg, #fe6786, #e89253);
+  text-align: center;
+  font-weight: bolder;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  position: relative;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 36px;
+  font-weight: bold;
+}
+.button:hover {
+  background-image: linear-gradient(30deg, #fe6786, #e89253);
+  color: white;
+}
+
+@media (max-width: 376px) {
+  .kek {
+    width: 100% !important;
+  }
+  body {
+    background: url(gs2.png) center no-repeat !important;
+    -moz-background-size: 100%;
+    -webkit-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 100%;
+  }
+  .interactiveMap {
+    display: none !important;
+  }
+}
+
+/* #fe6786  #e89253*/

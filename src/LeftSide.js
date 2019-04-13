@@ -2,6 +2,7 @@ import React from "react";
 import { Col, Button, Icon } from "antd";
 import "antd/dist/antd.css";
 import RightSide from "./RightSide";
+import "./left.css";
 
 export default class LeftSide extends React.Component {
   state = {
@@ -28,21 +29,14 @@ export default class LeftSide extends React.Component {
       (this.state.showingWindow == 3 && "Third window");
     return (
       <div>
-        <Col span={6} style={{ backgroundColor: "white", height: "100%" }}>
-          <div className="header">
-            <div className="logo" style={{ display: "inline" }}>
-              <Icon type="home" />
-            </div>
-            <div className="user" style={{ float: "right" }}>
-              <div
-                className="faq"
-                style={{ display: "inline", marginRight: "10px" }}
-              >
-                <Icon type="question" />
-              </div>
-              <div className="account" style={{ display: "inline" }}>
-                <Icon type="user" />
-              </div>
+        <Col span={6} className="kek" style={{ height: "100%" }}>
+          <div className="header" style={{ textAlign: "center" }}>
+            <div
+              className="main_title"
+              id="title"
+              style={{ display: "inline" }}
+            >
+              EasyMotion
             </div>
           </div>
           <div
@@ -53,6 +47,7 @@ export default class LeftSide extends React.Component {
               shape="circle"
               icon="minus"
               size={"large"}
+              className="button"
               onClick={() => this.onClick(1)}
             />
             <h3>Share a car</h3>
@@ -65,6 +60,7 @@ export default class LeftSide extends React.Component {
               shape="circle"
               icon="plus"
               size={"large"}
+              className="button"
               onClick={() => this.onClick(2)}
             />
             <h3>Rent a car</h3>
@@ -77,6 +73,7 @@ export default class LeftSide extends React.Component {
               shape="circle"
               icon="car"
               size={"large"}
+              className="button"
               onClick={() => this.onClick(3)}
             />
             <h3>Take a ride</h3>
