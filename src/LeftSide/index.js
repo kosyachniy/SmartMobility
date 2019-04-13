@@ -1,8 +1,10 @@
 import React from "react";
 import { Col, Button, Icon } from "antd";
 import "antd/dist/antd.css";
-import RightSide from "./RightSide";
-import "./left.css";
+
+import "./style.css";
+import RightSide from "../RightSide";
+
 
 export default class LeftSide extends React.Component {
   state = {

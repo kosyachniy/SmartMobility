@@ -17,13 +17,13 @@ contract EasyMotion {
     
     struct Ride {
         uint client;
-        mapping (uint => Location) locations;
+        Location[] locations;
     }
 
     struct Car {
         address owner;
         bool free;
-        mapping (uint => Ride) rides;
+       Ride[] rides;
     }
 
     mapping (uint => Car) cars;
@@ -65,9 +65,25 @@ contract EasyMotion {
         return cars[countCar].owner;
     }
     
-    // Owner car give
+    // Give car
 
-    function freeCar(uint car) public {
+    function giveCar(uint car) public {
        cars[owners[msg.sender].cars[car]].free = true;
+    }
+    
+    // Get car
+    
+    function getCar(uint car, uint lat, uint long, uint time) public {
+        if (cars[car].free) {
+            cars[car].free = false;
+            cars[car].rides.push(Ride({
+                client: msg.sender,
+                locations: Location({
+                    time: time,
+                    lat: lat,
+                    long: long
+                })
+            }));
+        }
     }
 }

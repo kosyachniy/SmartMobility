@@ -1,3 +1,1 @@
-This project is creating during CEE Hacks hackathon
-
-Powered by React
+This project is creating during CEEHacks hackathon

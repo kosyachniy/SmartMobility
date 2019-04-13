@@ -1,6 +1,8 @@
 import React from "react";
 import { Col } from "antd";
-import "./left.css";
+
+import "../LeftSide/style.css";
+
 
 export default class RightSide extends React.Component {
   render() {
