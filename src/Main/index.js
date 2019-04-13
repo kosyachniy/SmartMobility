@@ -16,6 +16,12 @@ export default class Main extends React.Component {
 		this.setState({
 			owner: !this.state.owner,
 		})
+
+		if (this.state.owner) {
+			document.getElementsByClassName('header')[0].style.opacity = '0.7'
+		} else {
+			document.getElementsByClassName('header')[0].style.opacity = '1'
+		}
 	}
 
 	render() {
@@ -24,7 +30,7 @@ export default class Main extends React.Component {
 			app_code={ appCode }
 			lat={ geoLat }
 			lng={ geoLng }
-			zoom={ 11 }
+			zoom={ 13 }
 		/>)
 		return (
 			<div className="main">
