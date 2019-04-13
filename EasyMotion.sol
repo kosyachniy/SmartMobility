@@ -2,6 +2,10 @@ contract EasyMotion {
     // Notary
     
     address notary;
+
+    constructor() public {
+        notary = msg.sender;
+    }
     
     // Cars
 
@@ -13,19 +17,57 @@ contract EasyMotion {
     
     struct Ride {
         uint client;
-        Location[] locations;
+        mapping (uint => Location) locations;
     }
 
     struct Car {
-        bool busy;
-        Ride[] rides;
+        address owner;
+        bool free;
+        mapping (uint => Ride) rides;
+    }
+
+    mapping (uint => Car) cars;
+    
+    struct Client {
+        uint count;
+        mapping (uint => uint) cars;
     }
     
-    mapping (address => Car) cars;
+    mapping (address => Client) owners;
+    
+    uint countCar = 0;
+    
+    // Add car
+    
+    function addCar(address user) public {
+        if (msg.sender == notary) {
+            countCar += 1;
+    
+            cars[countCar] = Car({
+                owner: user,
+                free: false
+            });
+
+            if (owners[user].count > 0) {
+                owners[user].count += 1;
+                owners[user].cars[owners[user].count] = countCar;
+            } else {
+                owners[user] = Client({
+                    count: 1
+                });
+                owners[user].cars[1] = countCar;
+            }
+
+        }
+    }
+    
+    function viewCar() public view returns (address) {
+        return cars[countCar].owner;
+    }
     
     // Owner car give
-    
-    function freeCar() public {
-        cars[msg.sender].busy = false;
+
+    function freeCar(uint car) public {
+       cars[owners[msg.sender].cars[car]].free = true;
     }
 }
