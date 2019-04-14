@@ -17,10 +17,17 @@ export default class Map extends React.Component {
 			zoom: props.zoom,
 			// theme: props.theme,
 			// style: props.style,
+			lat: null,
+			lng: null,
 		}
 	}
 
 	componentDidMount() {
+		function addMarkersToMap(map, lat, lng) {
+			let parisMarker = new window.H.map.Marker({lat, lng});
+			map.addObject(parisMarker);
+		}
+
 		this.platform = new window.H.service.Platform({
             app_id: this.props.app_id,
             app_code: this.props.app_code,
@@ -47,6 +54,17 @@ export default class Map extends React.Component {
 		let behavior = new window.H.mapevents.Behavior(events)
 		// eslint-disable-next-line
 		let ui = new window.H.ui.UI.createDefault(this.map, layer)
+
+		window.navigator.geolocation.getCurrentPosition(
+			(position) => {
+				this.setState({
+					lat: position.coords.latitude,
+					lng: position.coords.longitude,
+				})
+
+				addMarkersToMap(this.map, this.state.lat, this.state.lng)
+			}
+		)
 	}
 
 	render() {

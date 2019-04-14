@@ -20,7 +20,7 @@ export default class MyLoc extends React.Component {
 
 				<div className="order">
 					<div className="field">
-						<button className="button is-primary is-fullwidth" onClick={ () => {} }>Order</button>
+						<button className="button is-primary is-fullwidth" onClick={ () => {} }>To order</button>
 					</div>
 				</div>
 			</div>
