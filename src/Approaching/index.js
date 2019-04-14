@@ -3,7 +3,8 @@ import React from 'react'
 import { appId, appCode } from '../keys'
 import { geoLat, geoLng } from '../sets'
 import './style.css'
-import Map from '../Map'
+// import Map from '../Map'
+import Route from '../Route'
 
 
 export default class MyLoc extends React.Component {
@@ -22,7 +23,7 @@ export default class MyLoc extends React.Component {
 
 		return (
 			<div>
-				<Map
+				{/* <Map
 					app_id={ appId }
 					app_code={ appCode }
 					lat={ geoLat }
@@ -30,6 +31,13 @@ export default class MyLoc extends React.Component {
 					zoom={ 13 }
 					// markerLat={ this.state.lat }
 					// marletLng={ this.state.lng }
+				/> */}
+				<Route
+					app_id={ appId }
+					app_code={ appCode }
+					lat={ geoLat }
+					lng={ geoLng }
+					zoom={ 13 }
 				/>
 
 				<div className="call">
