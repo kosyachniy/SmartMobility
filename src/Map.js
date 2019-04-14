@@ -55,16 +55,20 @@ export default class Map extends React.Component {
 		// eslint-disable-next-line
 		let ui = new window.H.ui.UI.createDefault(this.map, layer)
 
-		window.navigator.geolocation.getCurrentPosition(
-			(position) => {
-				this.setState({
-					lat: position.coords.latitude,
-					lng: position.coords.longitude,
-				})
+		addMarkersToMap(this.map, 50.086882, 14.4203952)
 
-				addMarkersToMap(this.map, this.state.lat, this.state.lng)
-			}
-		)
+		// window.navigator.geolocation.getCurrentPosition(
+		// 	(position) => {
+		// 		this.setState({
+		// 			lat: position.coords.latitude,
+		// 			lng: position.coords.longitude,
+		// 		})
+
+		// 		// console.log(this.state.lat, this.state.lng)
+
+		// 		addMarkersToMap(this.map, this.state.lat, this.state.lng)
+		// 	}
+		// )
 	}
 
 	render() {

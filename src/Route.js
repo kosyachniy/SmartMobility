@@ -28,8 +28,8 @@ export default class Route extends React.Component {
 				representation: 'display',
 				routeattributes : 'waypoints,summary,shape,legs',
 				maneuverattributes: 'direction,action',
-				waypoint0: '52.5160,13.3779', // Brandenburg Gate
-				waypoint1: '52.5206,13.3862'  // Friedrichstraße Railway Station
+				waypoint0: '50.086882,14.4203952', // Brandenburg Gate
+				waypoint1: '50.1,14.415'  // Friedrichstraße Railway Station
 			  };
 		  
 		  
@@ -84,8 +84,8 @@ export default class Route extends React.Component {
 		  //Step 2: initialize a map - this map is centered over Berlin
 		  let pixelRatio = window.devicePixelRatio || 1
 		  let map = new window.H.Map(mapContainer,
-			defaultLayers.normal.map,{
-			center: {lat:52.5160, lng:13.3779},
+			defaultLayers.normal.xbase,{
+			center: this.state.center,
 			zoom: 13,
 			pixelRatio
 		  });
@@ -100,12 +100,7 @@ export default class Route extends React.Component {
 		  
 		  // Hold a reference to any infobubble opened
 		  let bubble;
-		  
-		  /**
-		   * Opens/Closes a infobubble
-		   * @param  {window.H.geo.Point} position     The location on the map.
-		   * @param  {String} text              The contents of the infobubble.
-		   */
+
 		  function openBubble(position, text){
 		   if(!bubble){
 			  bubble =  new window.H.ui.InfoBubble(
@@ -120,11 +115,7 @@ export default class Route extends React.Component {
 			}
 		  }
 		  
-		  
-		  /**
-		   * Creates a window.H.map.Polyline from the shape of the route and adds it to the map.
-		   * @param {Object} route A route as received from the window.H.service.RoutingService
-		   */
+
 		  function addRouteShapeToMap(route){
 			let strip = new window.H.geo.Strip(),
 			  routeShape = route.shape,
@@ -147,11 +138,7 @@ export default class Route extends React.Component {
 			map.setViewBounds(polyline.getBounds(), true);
 		  }
 		  
-		  
-		  /**
-		   * Creates a series of window.H.map.Marker points from the route and adds them to the map.
-		   * @param {Object} route  A route as received from the window.H.service.RoutingService
-		   */
+
 		  function addManueversToMap(route){
 			let svgMarkup = '<svg width="18" height="18" ' +
 			  'xmlns="http://www.w3.org/2000/svg">' +
@@ -281,7 +268,7 @@ export default class Route extends React.Component {
 
 	render() {
 		return (
-			<div id="map" style={{width: '600px', height: '400px', background: 'grey'}}></div>
+			<div id="map" style={{width: '100%', height: '100vh', background: 'grey'}}></div>
 		)
 	}
 }
