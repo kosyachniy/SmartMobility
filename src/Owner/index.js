@@ -8,8 +8,8 @@ import './card.css'
 export default class Owner extends React.Component {
 	render() {
 		return (
-			<div>
-				<form>
+			<div className="owner">
+				{/* <form> */}
 					<div className="field main-form">
 						<div className="control">
 							<input className="input is-primary is-medium" type="text" placeholder="Where are your home?" />
@@ -68,9 +68,9 @@ export default class Owner extends React.Component {
 					<div id="card-wrapper"></div>
 				
 					<div className="field">
-						<input className="button is-primary is-fullwidth" type="submit" value="Confirm" />
+						<button className="button is-primary is-fullwidth" onClick={ this.props.handlerSubmit }>Confirm</button>
 					</div>
-				</form>
+				{/* </form> */}
 			</div>
 		)
 	}
